@@ -1,2 +1,2 @@
 require('dotenv').config({ path: '../.env' });
-console.log(process.env.MY_KEY);
+console.log(process.env.OPENAI_API_KEY);
