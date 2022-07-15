@@ -16,23 +16,18 @@ function App() {
   const [inputLang, setInputLang] = React.useState('');
   const [outputLang, setOutputLang] = React.useState('');
   const [inputText, setInputText] = React.useState('');
-  const [outputText, setOutputText] = React.useState('');
 
   const handleInputChange = (event) => {
-    setInputLang(event.target.value);
+    setInputLang(event.target.value)
   };
 
   const handleInputText = (event) =>{
     setInputText(event.target.value)
-  }
+  };
 
   const handleOutputChange = (event) => {
     setOutputLang(event.target.value);
   };
-
-  const handleOutputText = (event) => {
-    setOutputText(event.target.value);
-  }
 
   return (
     <div>
@@ -70,14 +65,20 @@ function App() {
 
             <Grid item xs={12} sx={{height: 300, paddingTop: '2.5%'}}>
               <TextField
+                id="input"
                 sx={{width: '90%'}}
                 multiline rows={11}
                 onChange={handleInputText}
-                label="Enter your source here."
                 InputProps={{
                   endAdornment: (
                     <InputAdornment>
-                      <IconButton edge="end">
+                      <IconButton
+                        edge="end"
+                        onClick={() => {
+                          setInputText('');
+                          document.getElementById("input").value = "";
+                        }}
+                      >
                         <ClearIcon />
                       </IconButton>
                     </InputAdornment>
@@ -103,7 +104,7 @@ function App() {
               <Box sx={{ maxWidth: 120 }}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Language</InputLabel>
-                  
+
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
@@ -111,14 +112,52 @@ function App() {
                     label="OutputLang"
                     onChange={handleOutputChange}
                   >
-                    <MenuItem value={"Python"}>Python</MenuItem>
-                    <MenuItem value={"Cobol"}>COBOL</MenuItem>
-                    <MenuItem value={"JavaScript"}>JS</MenuItem>
-                    <MenuItem value={"Java"}>Java</MenuItem>
-                    <MenuItem value={"C"}>C</MenuItem>
-                    <MenuItem value={"C++"}>C++</MenuItem>
-                    <MenuItem value={"SQL"}>SQL</MenuItem>
-                    <MenuItem value={"English"}>English</MenuItem>
+                    <MenuItem 
+                      disabled={inputLang === "Python" || inputLang === "SQL"}
+                      value={"Python"}>
+                        Python
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={inputLang === "Cobol" || inputLang === "SQL"}
+                      value={"Cobol"}>
+                        COBOL
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={inputLang === "JavaScript" || inputLang === "SQL"}
+                      value={"JavaScript"}>
+                        JS
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={inputLang === "Java" || inputLang === "SQL"}
+                      value={"Java"}>
+                        Java
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={inputLang === "C" || inputLang === "SQL"}
+                      value={"C"}>
+                        C
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={inputLang === "C++" || inputLang === "SQL"}
+                      value={"C++"}>
+                        C++
+                    </MenuItem>
+
+                    <MenuItem
+                      disabled={!(inputLang === "English")}
+                      value={"SQL"}>
+                      SQL
+                    </MenuItem>
+
+                    <MenuItem
+                      value={"English"}>
+                        English
+                      </MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -128,9 +167,8 @@ function App() {
               <TextField
                 disabled
                 id="output"
-                sx={{width: '90%'}}
+                sx={{width: '90%', input: {color: 'black'}}}
                 multiline rows={11}
-                label="Your translation will appear here."
                 InputProps={{
                   endAdornment: (
                     <InputAdornment>
