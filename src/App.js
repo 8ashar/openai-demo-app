@@ -61,8 +61,8 @@ function App() {
                     <MenuItem value={"Java"}>Java</MenuItem>
                     <MenuItem value={"C"}>C</MenuItem>
                     <MenuItem value={"C++"}>C++</MenuItem>
-                    <MenuItem value={"SQL"}>C++</MenuItem>
-                    <MenuItem value={"English"}>C++</MenuItem>
+                    <MenuItem value={"SQL"}>SQL</MenuItem>
+                    <MenuItem value={"English"}>English</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -116,8 +116,8 @@ function App() {
                     <MenuItem value={"Java"}>Java</MenuItem>
                     <MenuItem value={"C"}>C</MenuItem>
                     <MenuItem value={"C++"}>C++</MenuItem>
-                    <MenuItem value={"SQL"}>C++</MenuItem>
-                    <MenuItem value={"English"}>C++</MenuItem>
+                    <MenuItem value={"SQL"}>SQL</MenuItem>
+                    <MenuItem value={"English"}>English</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
