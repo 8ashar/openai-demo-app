@@ -1,7 +1,7 @@
 // function that translates code inputText from inputLang to outputLang
 async function translate(inputLang, outputLang, inputText) {
     // OpenAI initialization
-    const { Configuration, OpenAIAPI, OpenAIApi } = require("openai");
+    const { Configuration, OpenAIApi } = require("openai");
     const configuration = new Configuration({
         apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
@@ -35,7 +35,7 @@ async function translate(inputLang, outputLang, inputText) {
     } else if (inputLang === "English") {
         if (outputLang === "SQL") {
             model = "text-davinci-002";
-            prompt = `Create a ${outputLang} request that ${inputText}:\n\n`;
+            prompt = `Create a ${outputLang} request to ${inputText}:\n\n`;
         } else if (outputLang === "Python" || outputLang === "JavaScript") {
             model = "code-davinci-002";
             prompt = `# A ${outputLang} function that ${inputText}:\n\n`;
