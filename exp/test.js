@@ -1,3 +1,5 @@
+const { HelpOutline } = require('@mui/icons-material');
+
 require('dotenv').config({ path: '../.env' });
 
 async function test() {
@@ -7,13 +9,13 @@ async function test() {
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
-        model: "text-davinci-002",
-        prompt: "Say this is a test",
-        max_tokens: 6,
+        model: "code-davinci-002",
+        prompt: "Translate the following Java function to Python: System.out.println(\"Hello, world!\");",
+        max_tokens: 256,
         temperature: 0,
     });
 
-    console.log(response.data.choices[0].text)
+    console.log(response.data.choices[0].text);
 }
 
 test();

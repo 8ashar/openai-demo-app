@@ -10,11 +10,13 @@ import { InputAdornment, TextField } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ClearIcon from '@mui/icons-material/Clear';
+import translate from './translate';
 
 function App() {
   const [inputLang, setInputLang] = React.useState('');
   const [outputLang, setOutputLang] = React.useState('');
   const [inputText, setInputText] = React.useState('');
+  const [outputText, setOutputText] = React.useState('');
 
   const handleInputChange = (event) => {
     setInputLang(event.target.value);
@@ -28,9 +30,12 @@ function App() {
     setOutputLang(event.target.value);
   };
 
+  const handleOutputText = (event) => {
+    setOutputText(event.target.value);
+  }
+
   return (
     <div>
-
       <Box sx={{ paddingTop: '1%', paddingLeft: '1%', flexGrow: 1 }}>
         <Grid container spacing={1}>
           <Grid item xs={6}>
@@ -50,12 +55,14 @@ function App() {
                     label="InputLang"
                     onChange={handleInputChange}
                   >
-                    <MenuItem value={1}>Python</MenuItem>
-                    <MenuItem value={2}>COBOL</MenuItem>
-                    <MenuItem value={3}>JS</MenuItem>
-                    <MenuItem value={4}>Java</MenuItem>
-                    <MenuItem value={5}>C</MenuItem>
-                    <MenuItem value={6}>C++</MenuItem>
+                    <MenuItem value={"Python"}>Python</MenuItem>
+                    <MenuItem value={"Cobol"}>COBOL</MenuItem>
+                    <MenuItem value={"JavaScript"}>JS</MenuItem>
+                    <MenuItem value={"Java"}>Java</MenuItem>
+                    <MenuItem value={"C"}>C</MenuItem>
+                    <MenuItem value={"C++"}>C++</MenuItem>
+                    <MenuItem value={"SQL"}>C++</MenuItem>
+                    <MenuItem value={"English"}>C++</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -82,7 +89,8 @@ function App() {
             <Grid item xs={12} sx={{paddingTop: '2.5%'}}>
               <Button variant="contained"
               onClick={() => {
-                console.log(inputText);
+                translate(inputLang, outputLang, inputText).then((response) => {document.getElementById("output").value = response;
+                                                                                document.getElementById("output").value.color='#000000'})
               }}>Submit</Button>
             </Grid>
           </Grid>
@@ -103,12 +111,14 @@ function App() {
                     label="OutputLang"
                     onChange={handleOutputChange}
                   >
-                    <MenuItem value={1}>Python</MenuItem>
-                    <MenuItem value={2}>COBOL</MenuItem>
-                    <MenuItem value={3}>JS</MenuItem>
-                    <MenuItem value={4}>Java</MenuItem>
-                    <MenuItem value={5}>C</MenuItem>
-                    <MenuItem value={6}>C++</MenuItem>
+                    <MenuItem value={"Python"}>Python</MenuItem>
+                    <MenuItem value={"Cobol"}>COBOL</MenuItem>
+                    <MenuItem value={"JavaScript"}>JS</MenuItem>
+                    <MenuItem value={"Java"}>Java</MenuItem>
+                    <MenuItem value={"C"}>C</MenuItem>
+                    <MenuItem value={"C++"}>C++</MenuItem>
+                    <MenuItem value={"SQL"}>C++</MenuItem>
+                    <MenuItem value={"English"}>C++</MenuItem>
                   </Select>
                 </FormControl>
               </Box>
@@ -117,6 +127,7 @@ function App() {
             <Grid item xs={12} sx={{height: 300, paddingTop: '2.5%'}}>
               <TextField
                 disabled
+                id="output"
                 sx={{width: '90%'}}
                 multiline rows={11}
                 label="Your translation will appear here."
