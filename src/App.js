@@ -89,8 +89,7 @@ function App() {
             <Grid item xs={12} sx={{paddingTop: '2.5%'}}>
               <Button variant="contained"
               onClick={() => {
-                translate(inputLang, outputLang, inputText).then((response) => {document.getElementById("output").value = response;
-                                                                                document.getElementById("output").value.color='#000000'})
+                translate(inputLang, outputLang, inputText).then((response) => {document.getElementById("output").value = response;})
               }}>Submit</Button>
             </Grid>
           </Grid>
