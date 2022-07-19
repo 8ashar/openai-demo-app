@@ -38,18 +38,18 @@ async function translate(inputLang, outputLang, inputText) {
             prompt = `Create a ${outputLang} request to ${inputText}:\n\n`;
         } else if (outputLang === "Python" || outputLang === "JavaScript") {
             model = "code-davinci-002";
-            prompt = `# A ${outputLang} function that ${inputText}:\n\n`;
+            prompt = `# A ${outputLang} function to ${inputText}:\n\n`;
         } else {
             model = "code-davinci-002";
-            prompt = `// A ${outputLang} function that ${inputText}:\n\n`;
+            prompt = `// A ${outputLang} function to ${inputText}:\n\n`;
         }
     } else {
         model = "code-davinci-002";
 
         if (inputLang === "Python" || inputLang === "JavaScript") {
-            prompt = `# ${inputLang} to ${outputLang}:\n${inputLang}\n\n${inputText}\n\n${outputLang}:\n`;
+            prompt = `# ${inputLang} to ${outputLang}:\n${inputLang}:\n\n${inputText}\n\n${outputLang}:\n`;
         } else {
-            prompt = `// ${inputLang} to ${outputLang}:\n${inputLang}\n\n${inputText}\n\n${outputLang}:\n`;
+            prompt = `// ${inputLang} to ${outputLang}:\n${inputLang}:\n\n${inputText}\n\n${outputLang}:\n`;
         }
     }
 
