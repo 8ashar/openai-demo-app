@@ -13,8 +13,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 import translate from './translate';
 
 function App() {
-  const [inputLang, setInputLang] = React.useState('');
-  const [outputLang, setOutputLang] = React.useState('');
+  const [inputLang, setInputLang] = React.useState('English');
+  const [outputLang, setOutputLang] = React.useState('English');
   const [inputText, setInputText] = React.useState('');
 
   const handleInputChange = (event) => {
@@ -31,6 +31,7 @@ function App() {
 
   const handleOutputChange = (event) => {
     setOutputLang(event.target.value);
+    document.getElementById("output").value="";
   };
 
   const handlePython = () => {
@@ -122,6 +123,27 @@ int main() {
     document.getElementById("input").placeholder=text;
   };
 
+  const handleEngEng = () => {
+    if (inputLang === "English") {
+      const text = "Tell me a funny story.";
+      document.getElementById("input").placeholder=text;
+    } 
+  };
+
+  const handleEngSQL = () => {
+    if (inputLang === "English") {
+      const text = "find the user with the most hours logged";
+      document.getElementById("input").placeholder=text;
+    } 
+  };
+
+  const handleEng = () => {
+    if (inputLang !== "English" || inputLang !== "SQL") {
+      const text = "find the maximum of an array of numbers";
+      document.getElementById("input").placeholder=text;
+    } 
+  };
+
   return (
     <div>
       <Box sx={{ paddingTop: '1%', paddingLeft: '1%', flexGrow: 1 }}>
@@ -134,7 +156,7 @@ int main() {
             <Grid item xs={12}>
               <Box sx={{ maxWidth: 120 }}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Language</InputLabel>
+                  <InputLabel required id="demo-simple-select-label">Language</InputLabel>
 
                   <Select
                     labelId="demo-simple-select-label"
@@ -157,7 +179,8 @@ int main() {
 
             <Grid item xs={12} sx={{height: 400, paddingTop: '2.5%'}}>
               <TextField
-                placeholder=''
+                required
+                placeholder='Tell me a funny story.'
                 label='Enter your source here:'
                 id="input"
                 sx={{width: '90%'}}
@@ -171,7 +194,6 @@ int main() {
                         onClick={() => {
                           setInputText('');
                           document.getElementById("input").value = "";
-                          document.getElementById("output").value="";
                         }}
                       >
                         <ClearIcon />
@@ -198,7 +220,7 @@ int main() {
             <Grid item xs={12}>
               <Box sx={{ maxWidth: 120 }}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Language</InputLabel>
+                  <InputLabel required id="demo-simple-select-label">Language</InputLabel>
 
                   <Select
                     labelId="demo-simple-select-label"
@@ -208,42 +230,49 @@ int main() {
                     onChange={handleOutputChange}
                   >
                     <MenuItem 
+                      onClick={handleEng}
                       disabled={inputLang === "Python" || inputLang === "SQL"}
                       value={"Python"}>
                         Python
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEng}
                       disabled={inputLang === "Cobol" || inputLang === "SQL"}
                       value={"Cobol"}>
                         COBOL
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEng}
                       disabled={inputLang === "JavaScript" || inputLang === "SQL"}
                       value={"JavaScript"}>
                         JS
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEng}
                       disabled={inputLang === "Java" || inputLang === "SQL"}
                       value={"Java"}>
                         Java
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEng}
                       disabled={inputLang === "C" || inputLang === "SQL"}
                       value={"C"}>
                         C
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEngSQL}
                       disabled={!(inputLang === "English")}
                       value={"SQL"}>
                       SQL
                     </MenuItem>
 
                     <MenuItem
+                      onClick={handleEngEng}
                       value={"English"}>
                         English
                       </MenuItem>
