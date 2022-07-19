@@ -34,7 +34,7 @@ function App() {
   };
 
   const handlePython = () => {
-    const text = `def find max(nums):
+    const text = `def findMax(nums):
     max = list(0)
     
     for num in nums:
@@ -44,7 +44,7 @@ function App() {
     return max
       
 numbers = [0, 5, 7, 88, 14]
-print(max(list))`;
+print(max(numbers))`;
 
     document.getElementById("input").placeholder=text
   };
@@ -82,26 +82,29 @@ console.log(findMax(numbers));`
 }
 
 public static void main(String[] args) {
-    int[] numbers = [0, 5, 7, 88, 14];
-    System.out.println(findMax(numbers))
+    int[] numbers = {0, 5, 7, 88, 14};
+    System.out.println(findMax(numbers));
 }`
 
     document.getElementById("input").placeholder=text;
   };
 
   const handleC = () => {
-    const text = `int findMax(int nums[]) {
-    int i, max = arr[0];
+    const text = `#include <stdio.h>
 
-    for (i = 0; i < sizeof(nums) / sizeof(max); i++)
+    int findMax(int nums[], size_t n) {
+    int i, max = nums[0];
+
+    for (i = 0; i < n; i++)
         if (nums[i] > max) max = nums[i];
 
     return max;
 }
 
 int main() {
-    int numbers[] = [0, 5, 7, 88, 14];
-    printf("%d", findMax(numbers));
+    int numbers[] = {0, 5, 7, 88, 14};
+    size_t length = sizeof(numbers) / sizeof(numbers[0]);
+    printf("%d", findMax(numbers, length));
     return 0;
 }`
 
