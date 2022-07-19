@@ -108,7 +108,7 @@ int main() {
   };
 
   const handleSql = () => {
-    const text = `SELECT MIN(Price) AS SmallestPrice FROM Products;`;
+    const text = `SELECT MAX(Price) AS SmallestPrice FROM Products;`;
 
     document.getElementById("input").placeholder=text;
   };
