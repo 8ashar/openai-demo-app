@@ -20,6 +20,7 @@ function App() {
   const handleInputChange = (event) => {
     setInputLang(event.target.value)
     setInputText('');
+    setOutputLang("English");
     document.getElementById("input").value = "";
     document.getElementById("output".value="");
   };
