@@ -22,7 +22,7 @@ function App() {
     setInputText('');
     setOutputLang("English");
     document.getElementById("input").value = "";
-    document.getElementById("output".value="");
+    document.getElementById("output").value="";
   };
 
   const handleInputText = (event) =>{

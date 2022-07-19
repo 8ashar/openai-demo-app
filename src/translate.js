@@ -22,7 +22,7 @@ async function translate(inputLang, outputLang, inputText) {
         model = "code-davinci-002";
 
         if (inputLang === "Python" || inputLang === "JavaScript") {
-            prompt = `# ${inputLang}\n${inputText}\n\n# Explanation of what the code does:\n\n#`;
+            prompt = `# ${inputLang}\n${inputText}\n\n# The code above`;
         } else if (inputLang === "SQL") {
             prompt = `${inputText}\n\nThe above ${inputLang} command`
         } else if (inputLang === "English") {
@@ -30,7 +30,7 @@ async function translate(inputLang, outputLang, inputText) {
             model = "text-davinci-002";
             prompt = inputText;
         } else {
-            prompt = `// ${inputLang}\n${inputText}\n\n// Explanation of what the code does:\n\n//`;
+            prompt = `// ${inputLang}\n${inputText}\n\n// The code above`;
         }
     } else if (inputLang === "English") {
         if (outputLang === "SQL") {
