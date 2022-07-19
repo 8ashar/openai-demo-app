@@ -119,7 +119,16 @@ int main() {
   };
 
   const handleEnglish = () => {
-    const text = `find the maximum of an array of numbers`
+    var text;
+
+    if (outputLang === "English") {
+      text = "Tell me a funny story.";
+    } else if (outputLang === "SQL") {
+      text = "find the user with the most hours logged";
+    } else {
+      text = "find the maximum of an array of numbers";
+    }
+
     document.getElementById("input").placeholder=text;
   };
 
@@ -138,7 +147,7 @@ int main() {
   };
 
   const handleEng = () => {
-    if (inputLang !== "English" || inputLang !== "SQL") {
+    if ((inputLang === "English" && outputLang !== "SQL") && outputLang !== "English") {
       const text = "find the maximum of an array of numbers";
       document.getElementById("input").placeholder=text;
     } 
@@ -177,14 +186,14 @@ int main() {
               </Box>
             </Grid>
 
-            <Grid item xs={12} sx={{height: 400, paddingTop: '2.5%'}}>
+            <Grid item xs={12} sx={{height: 425, paddingTop: '2.5%'}}>
               <TextField
                 required
                 placeholder='Tell me a funny story.'
                 label='Enter your source here:'
                 id="input"
                 sx={{width: '90%'}}
-                multiline rows={15}
+                multiline rows={18}
                 onChange={handleInputText}
                 InputProps={{
                   endAdornment: (
@@ -204,7 +213,7 @@ int main() {
               />
             </Grid>
 
-            <Grid item xs={12} sx={{paddingTop: '2.5%'}}>
+            <Grid item xs={12} sx={{paddingTop: '7.5%'}}>
               <Button variant="contained"
               onClick={() => {
                 translate(inputLang, outputLang, inputText).then((response) => {document.getElementById("output").value = response;})
@@ -281,16 +290,22 @@ int main() {
               </Box>
             </Grid>
  
-            <Grid item xs={12} sx={{height: 400, paddingTop: '2.5%'}}>
+            <Grid item xs={12} sx={{height: 425, paddingTop: '2.5%'}}>
               <TextField
                 disabled
                 id="output"
                 sx={{width: '90%'}}
-                multiline rows={15}
+                multiline rows={18}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment>
-                      <IconButton edge="end">
+                      <IconButton
+                      id="copyButton" 
+                      edge="end"
+                      onClick={ () => {
+                        navigator.clipboard.writeText(document.getElementById("output").value);
+                      }}
+                      >
                         <ContentCopyIcon />
                       </IconButton>
                     </InputAdornment>
